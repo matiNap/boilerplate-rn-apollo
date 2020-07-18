@@ -1,10 +1,10 @@
-# React Native boilerplate with Redux that support theming
+# React Native boilerplate with Apollo that support theming
 
-Also include: 
+Also include:
+
 - expo
 - react-native-elements
 - react-navigation
-- redux-toolkit
+- apollo-boost
 - react-reanimated
 - react-redash
-

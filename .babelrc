@@ -22,7 +22,12 @@
           "_globals": "./theme/globals",
 
           // In files now we can: import {RootState} from '_store'
-          "_store": "./store.ts"
+          "_store": "./store.ts",
+
+          //For Grpahql
+          "_mutations": "./mutations/",
+          "_queries": "./queries/",
+          "_updates": "./updates/"
         }
       }
     ]

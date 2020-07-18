@@ -19,6 +19,10 @@ module.exports = {
         _globals: './theme/globals',
 
         _store: './store.ts',
+
+        _mutations: './mutations/',
+        _queries: './queries/',
+        _updates: './updates/',
       },
     },
   ],

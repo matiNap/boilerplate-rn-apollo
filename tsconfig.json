@@ -34,7 +34,11 @@
       "_metrics": ["./theme/metrics.ts"],
       "_globals": ["./theme/globals.ts"],
 
-      "_store": ["./store.ts"]
+      "_store": ["./store.ts"],
+
+      "_mutations/*": ["./mutations/*"],
+      "_queries/*": ["./queries/*"],
+      "_updates/*": ["./updates/*"]
     }
   }
 }

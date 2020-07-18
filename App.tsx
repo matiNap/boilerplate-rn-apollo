@@ -1,8 +1,9 @@
 import React from 'react';
-import AppContainer from './screens/AppContainer';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import store, { persistedStore } from './store';
+import {
+  InMemoryCache,
+  ApolloProvider,
+  ApolloClient,
+} from '@apollo/client';
 import { useFonts } from '@expo-google-fonts/inter';
 import { Rubik_500Medium } from '@expo-google-fonts/dev';
 import {
@@ -18,8 +19,16 @@ import palette, {
 import { NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from 'react-native-elements';
 import { StatusBar } from 'expo-status-bar';
+import AppContainer from './screens/AppContainer';
 
 console.disableYellowBox = true;
+
+const cache = new InMemoryCache({});
+
+const client = new ApolloClient({
+  uri: 'PASTE SERVER URI',
+  cache,
+});
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Rubik_500Medium });
@@ -42,16 +51,14 @@ export default function App() {
     const statusBarStyle = isDarkTheme ? 'light' : 'dark';
 
     return (
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistedStore}>
-          <NavigationContainer theme={navigationTheme}>
-            <ThemeProvider theme={elementsTheme}>
-              <AppContainer />
-              <StatusBar style={statusBarStyle} />
-            </ThemeProvider>
-          </NavigationContainer>
-        </PersistGate>
-      </Provider>
+      <NavigationContainer theme={navigationTheme}>
+        <ThemeProvider theme={elementsTheme}>
+          <ApolloProvider client={client}>
+            <AppContainer />
+            <StatusBar style={statusBarStyle} />
+          </ApolloProvider>
+        </ThemeProvider>
+      </NavigationContainer>
     );
   }
 }
